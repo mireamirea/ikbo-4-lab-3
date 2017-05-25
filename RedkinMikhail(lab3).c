@@ -491,31 +491,6 @@ void writenode(Node *tree,FILE *f)
     if (tree->right) writenode(tree->right,f);
 }
 
-/*
-void loadnode(Node *tree, FILE *f)
-{
-    int targetn,num;
-    if (!fread(&targetn,sizeof(int),1,f)) return;
-    if (!fread(&num,sizeof(int),1,f)) return;
-    addnode(num,tree,targetn,PARENT,1);
-    loadnode(tree,f);
-}
-
-void writenode(Node *tree,FILE *f)
-{
-    if (tree->parent)
-    {
-        fwrite(&tree->parent->num,sizeof(int),1,f);
-        fwrite(&tree->num,sizeof(int),1,f);
-    }
-    else
-    {
-        fwrite(&tree->num,sizeof(int),1,f);
-    }
-    if (tree->left) writenode(tree->left,f);
-    if (tree->right) writenode(tree->right,f);
-}
-*/
 int fisheap(Node *tree,int curdepth)
 {
     extern int maxdepth;
