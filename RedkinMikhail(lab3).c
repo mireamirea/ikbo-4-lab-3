@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     int i,numtow,numtos;
     Node *tree=0;
     FILE *f=0;
-    char command[500],flag=8;
+    char command[500],flag=8,*c=0;
     if (argc>1)
     {
         if ((f=fopen(argv[1],"rb"))==0)
@@ -246,7 +246,10 @@ int main(int argc, char *argv[])
         }
         else if (!strcmp(command,"save"))
         {
-            scanf("%s",command);
+            fgets(command,sizeof(command),stdin);
+            c=command;
+            while ((*(c))!='\n') ++c;
+            *c='\0';
             if ((f=fopen(command,"wb"))!=0)
             {
                 writenode(tree,f);
@@ -257,7 +260,10 @@ int main(int argc, char *argv[])
         }
         else if (!strcmp(command,"load"))
         {
-            scanf("%s",command);
+            fgets(command,sizeof(command),stdin);
+            c=command;
+            while ((*(c))!='\n') ++c;
+            *c='\0';
             if ((f=fopen(command,"rb"))!=0)
             {
                 if (tree)
