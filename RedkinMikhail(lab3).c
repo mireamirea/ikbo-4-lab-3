@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     int i,numtow,numtos;
     Node *tree=0;
     FILE *f=0;
-    char command[50],flag=8;
+    char command[500],flag=8;
     if (argc>1)
     {
         if ((f=fopen(argv[1],"rb"))==0)
@@ -246,8 +246,7 @@ int main(int argc, char *argv[])
         }
         else if (!strcmp(command,"save"))
         {
-            getchar();
-            gets(command);
+            scanf("%s",command);
             if ((f=fopen(command,"wb"))!=0)
             {
                 writenode(tree,f);
@@ -258,8 +257,7 @@ int main(int argc, char *argv[])
         }
         else if (!strcmp(command,"load"))
         {
-            getchar();
-            gets(command);
+            scanf("%s",command);
             if ((f=fopen(command,"rb"))!=0)
             {
                 if (tree)
@@ -314,6 +312,7 @@ Press enter to continue...\n");
         }
         fflush(stdin);
     }
+    return 0;
 }
 
 int removeelement(Node *tree, int numtos, char typedel)
@@ -322,7 +321,6 @@ int removeelement(Node *tree, int numtos, char typedel)
     int tmp=0;
     if (tree)
     {
-        //SIBLING--------------------------------
         if (typedel==SELF)
         {
             if (!flag)
@@ -447,7 +445,6 @@ int removeelement(Node *tree, int numtos, char typedel)
         }
         else
             printf("Wrong 3 parameter of removeelement function!\n");
-        //SIBLING--------------------------------
     }
     else
         return 0;
@@ -582,7 +579,6 @@ int addnode(int num,Node* current,int target,char type,int launchflag)
     }
     if (type==PARENT)
     {
-    //Parent -----------------------------------------
         if (current->num==target)
         {
             if (current->left==0)
@@ -623,7 +619,6 @@ int addnode(int num,Node* current,int target,char type,int launchflag)
                     ntmp=addnode(num,current->right,target,PARENT,0);
             }
         }
-    //Parent -----------------------------------------
     }
     else if (type==SIBLING)
     {
