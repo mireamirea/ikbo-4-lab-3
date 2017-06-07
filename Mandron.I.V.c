@@ -15,11 +15,17 @@ node* crnode(int val) {
 	nnode->left = NULL;
 	nnode->right = NULL;
 	return nnode;
-}node* create_tree(node *root, int key) {	if (NULL == root) {
+}
+
+node* create_tree(node *root, int key) {
+		if (NULL == root) {
 		root = crnode(key);
 		printf("The root is created ");
 	}
-	return root;}node* add_tree(node *root, int val, int index) {
+	return root;
+}
+
+node* add_tree(node *root, int val, int index) {
 	if (root == NULL) {
 		return NULL;
 	}
@@ -67,7 +73,9 @@ void print_tree(node *root, int i) {
 			i--;
 		}
 	}
-}void fprint_tree(FILE *fp, node *root, int i) {
+}
+
+void fprint_tree(FILE *fp, node *root, int i) {
 	int iter;
 	if (root != NULL) {
 		fprintf(fp, " %d\n", root->key);
@@ -84,7 +92,9 @@ void print_tree(node *root, int i) {
 			i--;
 		}
 	}
-}void save_tree(node *Tree, FILE **openFile) {
+}
+
+void save_tree(node *Tree, FILE **openFile) {
 	if (Tree != NULL) {
 		fwrite(Tree, sizeof(node), 1, *openFile);
 		if (Tree->left != NULL)
@@ -103,14 +113,17 @@ void load_tree(node **Tree, FILE **openFile) {
 		if ((*Tree)->right != NULL)
 			load_tree(&((*Tree)->right), openFile);
 	}
-}int find_tree(node *root, int val) {
+}
+
+int find_tree(node *root, int val) {
 	if (NULL == root)
 		return 0;
 	if (val == root->key)
 		return 1;
 	return find_tree(root->left, val);
 	return find_tree(root->right, val);
-}
+}
+
 void status_tree(node *tree, int flag) {
 	static int leaf = 0, node = 0;
 	if (flag == 1) {
