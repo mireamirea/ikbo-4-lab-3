@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define CHILD 1
-#define BROTHERS 2
-#define N 255
 
 struct node* crnode(int val);
 int add_tree(struct node *root, int val,int a,int b);
@@ -13,14 +10,19 @@ int obhod(struct node *root, int *nnode, int *inner);
 struct node * roditeli(struct node *root, int val);
 int categorization(FILE *file, struct node *root);
 
-//описание структуры, хранящей узел дерева
+//Г®ГЇГЁГ±Г Г­ГЁГҐ Г±ГІГ°ГіГЄГІГіГ°Г», ГµГ°Г Г­ГїГ№ГҐГ© ГіГ§ГҐГ« Г¤ГҐГ°ГҐГўГ 
 typedef struct node
 {
 	int key;
 	struct node *left, *right;
 } node;
-
+//РіР»РѕР±Р°Р»СЊРЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ 
 int i, rd, wt, nnode, inner;
+
+#define CHILD 1
+#define BROTHERS 2
+#define N 255
+
 int main(int argc,char *argv[])
 {
     FILE *rd_from, *wt_to;
@@ -84,7 +86,7 @@ int main(int argc,char *argv[])
     return 0;
 }
 
-//создание корневого узла
+//Г±Г®Г§Г¤Г Г­ГЁГҐ ГЄГ®Г°Г­ГҐГўГ®ГЈГ® ГіГ§Г«Г 
 node* crnode(int val)
 {
 	node* root = (node*) malloc(sizeof(node));
@@ -93,8 +95,8 @@ node* crnode(int val)
 	root->right = NULL;
 	return root;
 }
-//функция добавления, которая будет получать на вход указатель на корень
-//дерева и ключ добавляемого элемента
+//ГґГіГ­ГЄГ¶ГЁГї Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї, ГЄГ®ГІГ®Г°Г Гї ГЎГіГ¤ГҐГІ ГЇГ®Г«ГіГ·Г ГІГј Г­Г  ГўГµГ®Г¤ ГіГЄГ Г§Г ГІГҐГ«Гј Г­Г  ГЄГ®Г°ГҐГ­Гј
+//Г¤ГҐГ°ГҐГўГ  ГЁ ГЄГ«ГѕГ· Г¤Г®ГЎГ ГўГ«ГїГҐГ¬Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
 int add_tree(struct node *root, int val, int a, int b)
 {
     struct node *dat;
@@ -114,7 +116,7 @@ int add_tree(struct node *root, int val, int a, int b)
         }
 }
 
-//обход дерева
+//Г®ГЎГµГ®Г¤ Г¤ГҐГ°ГҐГўГ 
 int obhod (struct node *root, int *nnode, int *inner) {
  	if (NULL!=root) {
  		if ((NULL!=root->left) || (NULL!=root->right))
@@ -124,7 +126,7 @@ int obhod (struct node *root, int *nnode, int *inner) {
 		obhod(root->right, nnode, inner);
 	}
  }
-//функция поиска элемента, которая возвращает указатель на элемент, содержащий искомый ключ или NULL
+//ГґГіГ­ГЄГ¶ГЁГї ГЇГ®ГЁГ±ГЄГ  ГЅГ«ГҐГ¬ГҐГ­ГІГ , ГЄГ®ГІГ®Г°Г Гї ГўГ®Г§ГўГ°Г Г№Г ГҐГІ ГіГЄГ Г§Г ГІГҐГ«Гј Г­Г  ГЅГ«ГҐГ¬ГҐГ­ГІ, Г±Г®Г¤ГҐГ°Г¦Г Г№ГЁГ© ГЁГ±ГЄГ®Г¬Г»Г© ГЄГ«ГѕГ· ГЁГ«ГЁ NULL
 struct node* find_tree(struct node *root, int val)
 {
     struct node*temp=0;
@@ -137,7 +139,7 @@ struct node* find_tree(struct node *root, int val)
     if ((temp=find_tree(root->right, val))!=0)
         return temp;
     }
-//функция вывода массива по дереву
+//ГґГіГ­ГЄГ¶ГЁГї ГўГ»ГўГ®Г¤Г  Г¬Г Г±Г±ГЁГўГ  ГЇГ® Г¤ГҐГ°ГҐГўГі
 void print_tree(struct node *root, int stage)
 {
     int i;
