@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <locale.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -197,7 +196,6 @@ int isHeap(node* root)
 
 int main() {
 	FILE *fp;
-	setlocale(LC_ALL, "rus");
 	int dei = -1, temp, temp1, flag;
 	node *tree = NULL;
 	char str[256], txt[]=".txt";
